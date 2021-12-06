@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://LoveGlitch.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/DialogueBox.gd" type="Script" id=2]
+
+[node name="DialogueBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.49829
+margin_bottom = -1.49829
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color( 0, 0, 0, 0.345098 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -126.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -125.0
+margin_bottom = -2.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "	WOW"
+__meta__ = {
+"_edit_use_anchors_": false
+}
