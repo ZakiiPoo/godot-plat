@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Art/Traps/Fire/On (16x32).png" type="Texture" id=1]
 [ext_resource path="res://Art/Traps/Fire/Off.png" type="Texture" id=2]
 [ext_resource path="res://Art/Traps/Fire/Hit (16x32).png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Fire.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -57,12 +58,30 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 8.79504, 8.46013 )
+
 [node name="Fire" type="StaticBody2D"]
+scale = Vector2( 2.5, 2.5 )
+script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "on"
 speed_scale = 2.0
+playing = true
 
-[node name="CollOn" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -7.93855, 15.8552, 8.15856, 15.8552, 8.39528, -0.123571, 0.110008, -15.8064, -7.93855, -0.00520897 )
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0324898, 7.87996 )
+shape = SubResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -6.26961, -0.165434, -6.4271, -9.5361, 0.108738, -15.757, 6.56583, -9.22112, 6.72332, -0.0079422 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

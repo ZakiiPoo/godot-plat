@@ -11,5 +11,5 @@ var x = 0
 
 func _input(event):
 	if event is InputEventMouseButton && event.button_index == BUTTON_LEFT && event.is_pressed():
-		write(thingsToSay[x])
+		# write(thingsToSay[x])
 		x = x + 1
